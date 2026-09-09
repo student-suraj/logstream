@@ -89,6 +89,12 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Apache Lucene -->
+<dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-core</artifactId>
+    <version>9.12.2</version>
+</dependency>
 
     </dependencies>
 
