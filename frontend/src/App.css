@@ -101,3 +101,47 @@ button { cursor: pointer; }
   .logs-table-wrap { overflow-x: auto; }.logs-table { min-width: 720px; }.table-footer { min-width: 720px; }.page-footer { margin-top: 30px; flex-direction: column; }
 }
 @media (max-width: 420px) { .stats-grid { grid-template-columns: 1fr; }.stat-card { min-height: 96px; }.stat-value { margin-top: 6px; }.stat-foot { margin-top: 0; }.query-helper { align-items: flex-start; }.query-helper p { line-height: 1.8; } }
+
+/* Live platform overview and alert management */
+.platform-overview { margin: 0 0 18px; padding: 22px 24px 18px; border: 1px solid #1e2b3e; border-radius: 12px; background: linear-gradient(125deg, rgba(18,28,44,.96), rgba(13,21,34,.96)); }
+.overview-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 17px; }
+.overview-heading h2 { margin: 5px 0 0; color: #eef4fd; font: 700 19px 'Manrope', sans-serif; }
+.refresh-label { display: inline-flex; align-items: center; gap: 8px; color: #8394ac; font-size: 11px; }
+.overview-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.overview-stat { min-width: 0; padding: 15px; border: 1px solid #24344a; border-radius: 8px; background: rgba(7,14,25,.52); }
+.overview-stat span { display: block; color: #8597b0; font-size: 11px; }
+.overview-stat strong { display: block; margin-top: 8px; color: #f0f5ff; font: 700 23px 'Manrope', sans-serif; overflow-wrap: anywhere; }
+.severity-summary { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 13px; }
+.severity-summary span { display: inline-flex; align-items: center; gap: 10px; padding: 6px 9px; border: 1px solid #27384e; border-radius: 6px; color: #95a6bd; font: 10px 'DM Mono', monospace; }
+.severity-summary strong { color: #eaf2fe; font-size: 12px; }
+.alert-workspace { margin-bottom: 18px; }
+.alert-form { display: grid; grid-template-columns: 1.2fr .7fr 1fr 1.2fr auto; align-items: end; gap: 10px; margin-top: 22px; }
+.alert-form .form-field input, .alert-form .form-field select { width: 100%; min-width: 0; height: 44px; padding: 0 11px; border: 1px solid #2a3a51; border-radius: 7px; outline: none; color: #dfe8f6; background: #0b1423; font-size: 12px; }
+.alert-form .form-field input:focus, .alert-form .form-field select:focus { border-color: #528fe2; box-shadow: 0 0 0 3px rgba(82,143,226,.10); }
+.alert-form .search-button { padding: 0 13px; }
+.alert-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 25px; padding-top: 21px; border-top: 1px solid #202d40; }
+.subsection-title { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; color: #dfe8f6; font: 600 13px 'Manrope', sans-serif; }
+.subsection-title span { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; border: 1px solid #2c4059; border-radius: 5px; color: #9ec7ff; font: 11px 'DM Mono', monospace; }
+.rule-list { display: grid; gap: 8px; }
+.rule-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 12px; border: 1px solid #25354a; border-radius: 7px; background: rgba(7,14,25,.38); }
+.rule-row strong { color: #eaf2fe; font-size: 12px; }
+.rule-row p { margin: 5px 0 0; color: #8798b0; font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
+.rule-row small { display: block; margin-top: 6px; color: #71839c; font-size: 10px; }
+.delete-rule { flex: 0 0 auto; padding: 5px 8px; border: 1px solid #51313b; border-radius: 5px; color: #ff9ba3; background: #241820; font-size: 10px; }
+.delete-rule:hover { background: #38212b; }
+.triggered-row { border-left: 2px solid #e7a65d; }
+.muted-note { color: #7f91aa; font-size: 11px; line-height: 1.7; }
+.alert-note { margin: 18px 0 0; padding-top: 13px; border-top: 1px solid #202d40; }
+.rule-error { padding: 10px 12px; border: 1px solid #6b3540; border-radius: 6px; color: #ffabb1; background: #291820; font-size: 12px; }
+@media (max-width: 900px) {
+  .alert-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .alert-form .search-button { width: 100%; }
+  .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .overview-heading { align-items: flex-start; flex-direction: column; }
+  .alert-columns { grid-template-columns: 1fr; }
+  .alert-form { grid-template-columns: 1fr; }
+  .overview-stat { padding: 12px; }
+  .overview-stat strong { font-size: 20px; }
+}
