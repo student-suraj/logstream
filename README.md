@@ -79,13 +79,16 @@ With the backend running, open a second terminal:
 **Windows PowerShell**
 ```powershell
 cd backend/logstream-backend
-.\mvnw.cmd -q -DskipTests package
-java -cp target/classes;target/dependency/* logstream_backend.client.LogGrpcClient
+.\mvnw.cmd -q compile exec:java "-Dexec.mainClass=logstream_backend.client.LogGrpcClient"
 ```
 
-The sample client uses the generated gRPC classes; if the plain classpath command does not include dependencies in your environment, run the client from your IDE with the Maven dependency classpath. It sends a sample `INFO` event from `payment-service`.
+**macOS/Linux**
+```bash
+cd backend/logstream-backend
+./mvnw -q compile exec:java -Dexec.mainClass=logstream_backend.client.LogGrpcClient
+```
 
-You can also run `logstream_backend.client.LogGrpcClient` from an IDE after the Maven project has built and protobuf/gRPC source generation has run.
+The client uses the Maven dependency classpath and sends a sample `INFO` event from `payment-service`. Keep the backend running while sending the sample event.
 
 ## REST API
 
@@ -115,12 +118,12 @@ Run `logstream_backend.benchmark.LuceneSearchBenchmark` from your IDE or with a 
 - The current implementation is a learning/demo prototype. It does not yet provide authentication, a production alerting/rules engine, distributed storage, or deployment configuration.
 - The REST search API currently returns up to 20 results.
 - Ensure the frontend and backend are both running locally; the UI calls the backend at `http://localhost:8080`.
-- The project has not been verified in this environment by running a full Java/Maven build, gRPC smoke test, and frontend production build. Please complete these checks before describing it as production-ready.
+- GitHub Actions builds the backend and frontend on pushes and pull requests. Review the latest workflow result before submitting, and run the gRPC smoke test locally as well.
 
 ## Future improvements
 
 - Add automated integration tests for gRPC ingestion and REST search.
 - Add configurable alert rules and notifications.
-- Add Docker Compose deployment and CI checks.
+- Add Docker Compose deployment and end-to-end tests.
 - Make API base URLs configurable through environment variables.
 - Add pagination and structured error handling to search.
