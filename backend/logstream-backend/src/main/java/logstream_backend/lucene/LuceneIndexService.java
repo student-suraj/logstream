@@ -3,7 +3,6 @@ package logstream_backend.lucene;
 import com.logstream.grpc.LogMessage;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.LongPoint;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
@@ -11,7 +10,6 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.springframework.stereotype.Service;
-import org.apache.lucene.document.LongField;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -57,10 +55,10 @@ public class LuceneIndexService {
                         logMessage.getMessage(),
                         TextField.Store.YES));
 
-                document.add(new LongField(
+                document.add(new StringField(
                         "responseTime",
-                        logMessage.getResponseTime(),
-                        LongField.Store.YES));
+                        Long.toString(logMessage.getResponseTime()),
+                        StringField.Store.YES));
 
                 writer.addDocument(document);
                 writer.commit();
